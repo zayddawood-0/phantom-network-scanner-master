@@ -1,2 +1,19 @@
+[project]
+name = "phantom-network-scanner"
+version = "0.1.0"
+requires-python = ">=3.10"
+# Keep in sync with server/requirements.txt (used for local/Docker installs).
+dependencies = [
+    "fastapi==0.104.1",
+    "uvicorn==0.24.0",
+    "python-nmap==0.7.1",
+    "pydantic==2.5.0",
+    "python-dotenv==1.0.0",
+    "sqlalchemy",
+    "scikit-learn",
+    "pandas",
+    "google-generativeai",
+]
+
 [tool.vercel]
 entrypoint = "server.main:app"
