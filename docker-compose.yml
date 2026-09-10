@@ -1,0 +1,31 @@
+services:
+  server:
+    build:
+      context: ./server
+    ports:
+      - "8000:8000"
+    environment:
+      API_PORT: 8000
+      FRONTEND_URL: http://localhost:5173
+      GEMINI_API_KEY: ${GEMINI_API_KEY:-}
+      DATABASE_URL: sqlite:////app/data/phantom.db
+    volumes:
+      - phantom-db:/app/data
+    # nmap's SYN scan (-sS) needs raw sockets; Docker grants NET_RAW to root
+    # containers by default, so no extra cap_add is needed unless you switch
+    # the image to a non-root user.
+    restart: unless-stopped
+
+  client:
+    build:
+      context: ./client
+      args:
+        VITE_API_URL: http://localhost:8000
+    ports:
+      - "5173:80"
+    depends_on:
+      - server
+    restart: unless-stopped
+
+volumes:
+  phantom-db:
