@@ -43,8 +43,10 @@ export default function AIReport({ history }) {
   return (
     <div className="p-result">
       <div style={{ display: "flex", gap: "10px", marginBottom: "20px" }}>
-        <select 
-          className="p-input" 
+        <select
+          id="scan-select"
+          name="scan-select"
+          className="p-input"
           value={selectedScan} 
           onChange={(e) => setSelectedScan(e.target.value)}
           style={{ flex: 1, padding: "12px", background: "var(--bg)", color: "var(--dim)", border: "1px solid var(--border)", fontFamily: "monospace" }}

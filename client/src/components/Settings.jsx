@@ -88,8 +88,10 @@ export default function Settings({ history, setHistory }) {
 
         <div style={{ display: "flex", gap: "10px", alignItems: "center", flexWrap: "wrap", marginBottom: "15px" }}>
           {/* SECURE MASKED INPUT FIELD */}
-          <input 
-            type={showKey && !isKeySaved ? "text" : "password"} 
+          <input
+            id="gemini-api-key"
+            name="gemini-api-key"
+            type={showKey && !isKeySaved ? "text" : "password"}
             value={isKeySaved ? "••••••••••••••••••••••••••••••••••••" : apiKey}
             onChange={(e) => { setApiKey(e.target.value); setIsKeySaved(false); }}
             placeholder="AIzaSyB..."

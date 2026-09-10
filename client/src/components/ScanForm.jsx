@@ -14,6 +14,8 @@ export default function ScanForm({ onScan, loading }) {
   return (
     <div className="p-scanbar">
       <input
+        id="target-ip"
+        name="target-ip"
         type="text"
         placeholder="Target IPv4 — e.g. 192.168.1.1"
         value={ip}
@@ -21,7 +23,7 @@ export default function ScanForm({ onScan, loading }) {
         onKeyDown={(e) => e.key === "Enter" && handleSubmit()}
       />
 
-      <select value={scanType} onChange={(e) => setScanType(e.target.value)}>
+      <select id="scan-type" name="scan-type" value={scanType} onChange={(e) => setScanType(e.target.value)}>
         <option value="-sT">TCP Connect (-sT Fast)</option>
         <option value="-sS">SYN Scan (-sS Half)</option>
         <option value="-sV">Service Scan (-sV)</option>
