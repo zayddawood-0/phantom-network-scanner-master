@@ -1,4 +1,5 @@
 import os
+import sys
 import ipaddress
 import csv
 from io import StringIO
@@ -9,6 +10,11 @@ from fastapi.middleware.cors import CORSMiddleware
 from datetime import datetime
 import nmap
 from dotenv import load_dotenv
+
+# Keep `import models` / `import database` working whether this file is run
+# directly (cd server && uvicorn main:app) or imported as server.main:app
+# (e.g. on Vercel, where the working directory is the repo root).
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
 # Database imports
 from sqlalchemy.orm import Session
