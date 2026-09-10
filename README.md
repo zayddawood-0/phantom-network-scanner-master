@@ -139,7 +139,6 @@ The frontend runs on `http://localhost:5173` by default.
 ### Backend
 
 - `API_PORT` - optional port for the FastAPI server
-- `FRONTEND_URL` - allowed CORS origin for the frontend
 - `GEMINI_API_KEY` - optional API key for AI report generation
 
 ### Frontend

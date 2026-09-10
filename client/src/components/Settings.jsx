@@ -11,7 +11,7 @@ export default function Settings({ history, setHistory }) {
   const [isKeySaved, setIsKeySaved] = useState(false);
   const [showKey, setShowKey] = useState(false);
 
-  const API_URL = import.meta.env.VITE_API_URL || "http://localhost:8000";
+  const API_URL = (import.meta.env.VITE_API_URL || "http://localhost:8000").replace(/\/+$/, "");
 
   // Component mount hone par localStorage se key read karein
   useEffect(() => {

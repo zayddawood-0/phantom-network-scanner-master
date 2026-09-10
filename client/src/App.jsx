@@ -21,7 +21,7 @@ export default function App() {
   useEffect(() => {
     const fetchHistory = async () => {
       try {
-        const API_URL = import.meta.env.VITE_API_URL || "http://localhost:8000";
+        const API_URL = (import.meta.env.VITE_API_URL || "http://localhost:8000").replace(/\/+$/, "");
         const res = await axios.get(`${API_URL}/history`);
         setHistory(res.data);
       } catch (error) {
@@ -56,7 +56,7 @@ export default function App() {
     }, 350);
 
     try {
-      const API_URL = import.meta.env.VITE_API_URL || "http://localhost:8000";
+      const API_URL = (import.meta.env.VITE_API_URL || "http://localhost:8000").replace(/\/+$/, "");
       const response = await axios.post(`${API_URL}/scan`, { target_ip: ip, scan_type: scanType });
       
       clearInterval(interval);

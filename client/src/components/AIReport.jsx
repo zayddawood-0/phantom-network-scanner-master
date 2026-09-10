@@ -18,7 +18,7 @@ export default function AIReport({ history }) {
     const savedApiKey = localStorage.getItem("gemini_api_key");
 
     try {
-      const API_URL = import.meta.env.VITE_API_URL || "http://localhost:8000";
+      const API_URL = (import.meta.env.VITE_API_URL || "http://localhost:8000").replace(/\/+$/, "");
       
       // Axios request mein X-API-Key header attach karein
       const res = await axios.get(`${API_URL}/generate-report/${selectedScan}`, {

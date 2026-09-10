@@ -37,13 +37,15 @@ GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
 
 app = FastAPI(title="Phantom Network Scanner (ML Edition)")
 
-# Config from .env
-FRONTEND_URL = os.getenv("FRONTEND_URL", "http://localhost:5173")
-
+# No cookie-based auth is used (only an optional X-API-Key header), so we
+# don't need allow_credentials/an exact-origin allowlist here. That matters
+# because Vercel assigns each deployment its own unique preview URL in
+# addition to the stable production domain, which a single FRONTEND_URL
+# value can't cover.
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=[FRONTEND_URL],
-    allow_credentials=True,
+    allow_origins=["*"],
+    allow_credentials=False,
     allow_methods=["*"],
     allow_headers=["*"],
 )
